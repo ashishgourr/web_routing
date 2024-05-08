@@ -45,16 +45,24 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                    height: 80,
-                    width: 350,
-                    child: TextField(
-                      controller: passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Password',
-                          hintText: 'Enter password'),
-                    )),
+                  height: 80,
+                  width: 350,
+                  child: TextFormField(
+                    validator: (String? validator) {
+                      if (validator!.isEmpty) {
+                        return "Enter valid password";
+                      }
+                      return null;
+                    },
+                    controller: passwordController,
+                    obscureText: true,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Password',
+                        hintText: 'Enter password'),
+                  ),
+                ),
                 Container(
                   height: 40,
                   width: 200,
